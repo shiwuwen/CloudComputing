@@ -1,11 +1,17 @@
 import os
 
 def getFilenameList(path):
+	'''
+	获取path中的所有文件名
+	'''
 	filenameList = os.listdir(path)
 
 	return filenameList
 
 def getGlobalMidList(mid, name):
+	'''
+	获取所有up主信息
+	'''
 
 	filePath = './resourcePackage/finalResource/globalMid_' + str(mid) + '_' + name + '.txt'
 
@@ -16,10 +22,14 @@ def getGlobalMidList(mid, name):
 			mid = line.strip('\n').split(' ')[0]
 			globalMidList.append(int(mid))
 
+	#返回up主的mid
 	return globalMidList
 
 
 def createMidMatrix(globalMidList):
+	'''
+	创建用户矩阵
+	'''
 	midLength = len(globalMidList)
 	midMatrix = []
 
@@ -31,6 +41,9 @@ def createMidMatrix(globalMidList):
 
 
 def countCooperatorNums(globalMidList, midMatrix, filename):
+	'''
+	计算各个up主之间的合作次数
+	'''
 	dirPath = './resourcePackage/MidCooperator/'
 	filePath = dirPath + filename
 
@@ -49,6 +62,9 @@ def countCooperatorNums(globalMidList, midMatrix, filename):
 
 
 def saveMidCooperatorNums(midMatrix, globalMidList, mid, name):
+	'''
+	输出各个up主之间的合作次数
+	'''
 	path = './resourcePackage/finalResource/cooperatorNums_' + str(mid) + '_' + name + '.txt'
 
 	length = len(globalMidList)
